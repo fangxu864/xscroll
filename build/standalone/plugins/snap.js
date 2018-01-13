@@ -773,6 +773,8 @@ plugins_snap = function (exports) {
     _rowChange: function (e) {
       var self = this;
       if (self.prevRowIndex != self.snapRowIndex) {
+        //此处应重新计算下
+        self.snapRowIndex = Math.round(Math.abs(self.xscroll.getScrollTop()) / self.userConfig.snapHeight);
         self.trigger('rowchange', Util.mix(e, {
           type: 'rowchange',
           curRowIndex: self.snapRowIndex,
